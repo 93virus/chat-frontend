@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 import {nanoid} from 'nanoid';
 import io from 'socket.io-client';
 
-const socket = io("https://chatjsbackend.herokuapp.com/");
+const socket = io("https://chatjsbackend.herokafsdfuapp.com/");
 let username = nanoid(5);
 
 function App() {
