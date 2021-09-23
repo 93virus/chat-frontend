@@ -10,6 +10,7 @@ function App() {
 
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
+  const [joined, setJoined] = useState("");
 
   const sendChat = (e) => {
     e.preventDefault();
@@ -19,11 +20,17 @@ function App() {
 
   useEffect(() => {
     username = prompt("Enter your Username");
+
+    socket.on("join", {username: username});
   },[]);
 
   useEffect(() => {
     socket.on("chat", (payload) => {
       setChat([...chat, payload]);
+    })
+
+    socket.on("join", (joined) => {
+      setJoined(joined.username);
     })
   });
 
@@ -31,6 +38,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Humara Chat</h1>
+
+        <p>{joined.username} has joined..</p>
 
         {chat.map((payload, index) => {
           return (
