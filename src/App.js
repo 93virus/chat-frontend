@@ -3,8 +3,8 @@ import {useEffect, useState} from 'react';
 import {nanoid} from 'nanoid';
 import io from 'socket.io-client';
 
-// const socket = io("https://chatjsbackend.herokuapp.com");
-const socket = io("http://localhost:5000");
+const socket = io("https://chatjsbackend.herokuapp.com");
+// const socket = io("http://localhost:5000");
 let username = nanoid(5);
 
 function App() {
@@ -34,10 +34,6 @@ function App() {
     socket.on("join", (join) => {
       setJoined(join.username);
       setMembers([...members, join.username]);
-    })
-
-    socket.on("members", (members) => {
-      console.log(members);
     })
 
   });
