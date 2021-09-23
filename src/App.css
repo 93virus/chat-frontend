@@ -49,3 +49,9 @@ button {
 #uid {
   color: yellow;
 }
+
+.members {
+  position: absolute;
+  top: 100px;
+  right: 50px;
+}
